@@ -27,10 +27,7 @@ class Menu {
     console.log('0: Exit');
     let chosen = await ask.prompt(promptText);
 
-    if (+chosen === 0) {
-      ask.closePrompt(); // stop asking for input
-      return;
-    }
+    if (+chosen === 0) return this.exit(); // stop asking for input
 
     while (!this.isInputValid(+chosen)) {
       if (`${chosen}`.trim() === '' && depth > 0) {
@@ -57,12 +54,14 @@ class Menu {
     }
 
     optionObj.callbackFn();
+    if (optionObj.doExitOnCallback) return this.exit();
 
     this.activeScreen = this.options; // start over
     this.askForOptions();
   };
 
   isInputValid = input => input > 0 && input <= this.activeScreen.length;
+  exit = () => ask.closePrompt();
 }
 
 module.exports = Menu;
