@@ -1,0 +1,18 @@
+{
+  "name": "menu",
+  "version": "0.1.0",
+  "description": "a js menu component for CLI scripts",
+  "main": "menu.js",
+  "scripts": {
+    "test": "node runMenu.js"
+  },
+  "keywords": [
+    "menu",
+    "cli"
+  ],
+  "author": "greggry",
+  "license": "ISC",
+  "dependencies": {
+    "@greggry/ask": "^1.0.0"
+  }
+}
