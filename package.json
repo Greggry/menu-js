@@ -1,10 +1,14 @@
 {
-  "name": "menu",
+  "name": "@greggry/menu",
   "version": "0.1.0",
   "description": "a js menu component for CLI scripts",
   "main": "menu.js",
   "scripts": {
     "test": "node runMenu.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Greggry/menu-js.git"
   },
   "keywords": [
     "menu",
@@ -14,5 +18,9 @@
   "license": "ISC",
   "dependencies": {
     "@greggry/ask": "^1.0.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/Greggry/menu-js/issues"
+  },
+  "homepage": "https://github.com/Greggry/menu-js#readme"
 }
