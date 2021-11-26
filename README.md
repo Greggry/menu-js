@@ -2,6 +2,10 @@
 
 menu-js is a simple menu tool for use it for CLI interfaces.
 
+# Installation
+
+`npm i @greggry/menu`
+
 # How it works
 
 The Menu class takes in an array of object. Each object represents an option.
@@ -11,6 +15,8 @@ The onEmpty property has to be added as the last item in the options array.
 # Example
 
 ```js
+const Menu = require('@greggry/menu');
+
 const options = [
   {
     text: 'option 1',
