@@ -46,5 +46,9 @@ const options = [
 
 ];
 
-const menu = new Menu(...options);
+const menu = new Menu(options);
 ```
+
+If your project already uses a readline interface, you can pass it into the Ask() constructor as the second argument.
+
+`const ask = new Ask(options, readlineInterface);`
