@@ -1,6 +1,6 @@
 {
   "name": "@greggry/menu",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "a js menu component for CLI scripts",
   "main": "menu.js",
   "scripts": {
