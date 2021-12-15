@@ -1,11 +1,11 @@
-const ask = require('@greggry/ask');
+const Ask = require('@greggry/ask');
 
 class Menu {
   options = [];
   activeScreen = this.options; // for submenus
 
-  constructor(...optionsArgs) {
-    optionsArgs.forEach(option => {
+  constructor(options, readlineInterface) {
+    options.forEach(option => {
       this.options.push(option);
     });
 
@@ -14,6 +14,11 @@ class Menu {
     if (this.onEmptyOptions.length > 1)
       throw new Error('The onEmpty property option has to be the last option');
     this.hasOnEmpty = this.onEmptyOptions.length === 1 ? true : false;
+
+    // initialize Ask
+    this.ask = new Ask(readlineInterface);
+    // if interface created, destroy it when finished
+    this.isNewInterfaceCreated = !readlineInterface;
 
     this.askForOptions();
   }
@@ -39,7 +44,7 @@ class Menu {
     let chosen;
 
     while (!this.isInputValid(+chosen)) {
-      chosen = (await ask.prompt(promptText)).trim();
+      chosen = (await this.ask.ask(promptText)).trim();
       if (chosen === '0') return this.exit(); // stop asking for input
 
       if (chosen === '') {
@@ -82,7 +87,10 @@ class Menu {
 
   isInputValid = input => input > 0 && input <= this.activeScreen.length;
   getLastOption = () => this.options[this.options.length - 1];
-  exit = () => ask.closePrompt();
+  exit = () => {
+    // don't destroy the borrowed readline interface
+    if (this.isNewInterfaceCreated) this.ask.closeInterface();
+  };
 }
 
 module.exports = Menu;
